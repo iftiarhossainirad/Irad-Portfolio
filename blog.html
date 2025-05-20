@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blog – Irad</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1115;
+      --text: #ffffff;
+      --accent: #00bfff;
+      --nav-bg: #1a1d23;
+      --card-bg: #1c1f26;
+    }
+
+    body.light {
+      --bg: #ffffff;
+      --text: #111111;
+      --accent: #0077cc;
+      --nav-bg: #f0f0f0;
+      --card-bg: #e0e0e0;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    nav {
+      text-align: center;
+      background: var(--nav-bg);
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    nav a {
+      color: var(--accent);
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--text);
+    }
+
+    .toggle-btn {
+      float: right;
+      margin-right: 20px;
+      background: none;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      border-radius: 20px;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      background: var(--accent);
+      color: var(--bg);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+      animation: fadeIn 0.7s ease-in-out;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 30px;
+      color: var(--accent);
+      animation: slideDown 0.7s ease;
+    }
+
+    .blog-post {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: floatUp 0.6s ease forwards;
+      opacity: 0;
+    }
+
+    .blog-post:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .blog-post h2 {
+      margin-top: 0;
+      color: var(--accent);
+    }
+
+    .blog-post p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+
+    .date {
+      font-size: 0.8rem;
+      color: #999;
+      margin-bottom: 10px;
+    }
+
+    .comment-box {
+      margin-top: 20px;
+    }
+
+    .comment-box input,
+    .comment-box textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: none;
+      border-radius: 8px;
+      font-family: 'Poppins', sans-serif;
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      transition: background 0.3s ease;
+    }
+
+    .comment-box input:focus,
+    .comment-box textarea:focus {
+      outline: none;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .comment-box button {
+      background: var(--accent);
+      color: #000;
+      padding: 8px 18px;
+      border: none;
+      border-radius: 20px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .comment-box button:hover {
+      background: #0099ff;
+    }
+
+    .comments {
+      margin-top: 10px;
+    }
+
+    .comment {
+      background: rgba(255,255,255,0.1);
+      padding: 10px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <button class="toggle-btn" onclick="toggleTheme()">Toggle Mode</button>
+  </nav>
+
+  <div class="container">
+    <h1>My Blog</h1>
+
+    <div class="blog-post" id="post1">
+      <h2>Starting Web Development Journey</h2>
+      <div class="date">May 17, 2025</div>
+      <p>I’ve started building my own portfolio website. It’s been a fun experience learning how to work with HTML, CSS, and even JavaScript. This is the first step in my web dev path!</p>
+      <div class="comment-box">
+        <input type="text" placeholder="Your name" id="name1">
+        <textarea rows="3" placeholder="Write a comment..." id="comment1"></textarea>
+        <button onclick="addComment('post1')">Post Comment</button>
+        <div class="comments" id="comments-post1"></div>
+      </div>
+    </div>
+
+    <div class="blog-post" id="post2">
+      <h2>Learning Git & GitHub</h2>
+      <div class="date">May 15, 2025</div>
+      <p>Version control changed everything. I created my GitHub account and now I can upload and manage code, track changes, and share projects easily with others.</p>
+      <div class="comment-box">
+        <input type="text" placeholder="Your name" id="name2">
+        <textarea rows="3" placeholder="Write a comment..." id="comment2"></textarea>
+        <button onclick="addComment('post2')">Post Comment</button>
+        <div class="comments" id="comments-post2"></div>
+      </div>
+    </div>
+
+    <div class="blog-post" id="post3">
+      <h2>Designing with Purpose</h2>
+      <div class="date">May 12, 2025</div>
+      <p>User experience and visual design are important parts of web development. I’ve been experimenting with modern dark/light themes and responsive UI. More to come!</p>
+      <div class="comment-box">
+        <input type="text" placeholder="Your name" id="name3">
+        <textarea rows="3" placeholder="Write a comment..." id="comment3"></textarea>
+        <button onclick="addComment('post3')">Post Comment</button>
+        <div class="comments" id="comments-post3"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const isLight = document.body.classList.toggle('light');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+
+    window.onload = () => {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') document.body.classList.add('light');
+    };
+
+    function addComment(postId) {
+      const id = postId.slice(-1);
+      const name = document.getElementById('name' + id).value.trim();
+      const comment = document.getElementById('comment' + id).value.trim();
+      if (!name || !comment) return alert("Please enter your name and comment.");
+
+      const commentBox = document.getElementById('comments-' + postId);
+      const commentDiv = document.createElement('div');
+      commentDiv.className = 'comment';
+      commentDiv.textContent = `${name}: ${comment}`;
+      commentBox.appendChild(commentDiv);
+
+      document.getElementById('name' + id).value = '';
+      document.getElementById('comment' + id).value = '';
+    }
+  </script>
+</body>
+</html>

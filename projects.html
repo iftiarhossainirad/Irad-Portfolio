@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects – Irad</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f1115;
+      --text: #ffffff;
+      --accent: #00bfff;
+      --nav-bg: #1a1d23;
+      --card-bg: #1c1f26;
+    }
+    body.light {
+      --bg: #ffffff;
+      --text: #111111;
+      --accent: #0077cc;
+      --nav-bg: #f0f0f0;
+      --card-bg: #e0e0e0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    nav {
+      text-align: center;
+      background: var(--nav-bg);
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: var(--accent);
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .toggle-btn {
+      float: right;
+      margin-right: 20px;
+      background: none;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      border-radius: 20px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.7rem;
+      margin-bottom: 40px;
+      color: var(--accent);
+      animation: fadeDown 0.8s ease;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      animation: fadeUp 1s ease;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 8px rgba(0, 191, 255, 0.1);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(0, 191, 255, 0.2);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 180px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .project-title {
+      margin: 10px 0;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .project-desc {
+      font-size: 0.95rem;
+    }
+
+    .project-links {
+      margin-top: 12px;
+    }
+
+    .project-links a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-right: 12px;
+      font-weight: 500;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+    }
+
+    @keyframes fadeDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+    <button class="toggle-btn" onclick="toggleTheme()">Toggle Mode</button>
+  </nav>
+
+  <div class="container">
+    <h1>My Projects</h1>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="portfolio.jpg" alt="Portfolio Website">
+        <div class="project-title">Personal Portfolio</div>
+        <div class="project-desc">A modern and animated personal portfolio showcasing my skills and projects.</div>
+        <div class="project-links">
+          <a href="https://your-portfolio-live-link.com" target="_blank">Live</a>
+          <a href="https://github.com/iftiarhossainirad/portfolio" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="insta.jpg" alt="Instagram Design">
+        <div class="project-title">Instagram UI Clone</div>
+        <div class="project-desc">A creative clone of Instagram UI using HTML, CSS, and modern layout practices.</div>
+        <div class="project-links">
+          <a href="https://your-instagram-clone-live-link.com" target="_blank">Live</a>
+          <a href="https://github.com/iftiarhossainirad/instagram-design" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="typing-effect.gif" alt="Typing Effect Project">
+        <div class="project-title">Typing Effect</div>
+        <div class="project-desc">Animated typing effect built with JavaScript and CSS.</div>
+        <div class="project-links">
+          <a href="https://your-typing-effect-live-link.com" target="_blank">Live</a>
+          <a href="https://github.com/iftiarhossainirad/typing-effect" target="_blank">GitHub</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <img src="calculator.png" alt="Calculator App">
+        <div class="project-title">Calculator App</div>
+        <div class="project-desc">A clean and functional calculator made with HTML, CSS, and JavaScript.</div>
+        <div class="project-links">
+          <a href="https://your-calculator-live-link.com" target="_blank">Live</a>
+          <a href="https://github.com/iftiarhossainirad/calculator" target="_blank">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const isLight = document.body.classList.toggle('light');
+      localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    }
+    window.onload = () => {
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') document.body.classList.add('light');
+    }
+  </script>
+</body>
+</html>
