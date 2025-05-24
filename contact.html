@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact – Irad</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <style>
     :root {
       --bg-color: #0f1115;
@@ -34,24 +35,22 @@
       justify-content: space-between;
       align-items: center;
       background: var(--nav-bg);
-      padding: 10px 20px;
+      padding: 8px 16px;
       position: sticky;
       top: 0;
       z-index: 999;
-      flex-wrap: wrap;
+      font-size: 0.95rem;
     }
 
     .nav-links {
       display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
+      gap: 12px;
     }
 
     nav a {
       color: var(--accent-color);
       text-decoration: none;
       font-weight: bold;
-      font-size: 1rem;
     }
 
     .toggle {
@@ -59,17 +58,16 @@
       background: var(--accent-color);
       color: #000;
       border: none;
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 20px;
       font-weight: bold;
-      transition: 0.3s;
+      font-size: 0.9rem;
     }
 
     .toggle:hover {
       opacity: 0.85;
     }
 
-    /* Background animation */
     .stars {
       position: fixed;
       width: 100%;
@@ -179,9 +177,12 @@
       color: var(--accent-color);
       font-weight: bold;
       border: 2px solid var(--accent-color);
-      padding: 10px 20px;
+      padding: 10px 18px;
       border-radius: 30px;
       transition: 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .contact-links a:hover {
@@ -196,13 +197,13 @@
       }
 
       .nav-links {
-        width: 100%;
-        justify-content: space-between;
-        margin-bottom: 10px;
+        flex-wrap: wrap;
+        gap: 10px;
       }
 
       .toggle {
         align-self: flex-end;
+        margin-top: 8px;
       }
 
       .container {
@@ -238,9 +239,9 @@
     </form>
 
     <div class="contact-links">
-      <a href="mailto:iftiarhossainirad@gmail.com">Email Me</a>
-      <a href="https://www.facebook.com/IftiarHossainIrad" target="_blank">Facebook</a>
-      <a href="https://www.instagram.com/iftiarhossainirad" target="_blank">Instagram</a>
+      <a href="mailto:iftiarhossainirad@gmail.com"><i class="fas fa-envelope"></i>Email</a>
+      <a href="https://www.facebook.com/IftiarHossainIrad" target="_blank"><i class="fab fa-facebook-f"></i>Facebook</a>
+      <a href="https://www.instagram.com/iftiarhossainirad" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
     </div>
   </div>
 
