@@ -15,8 +15,8 @@
     }
 
     body.light-mode {
-      --bg-color: #f5f5f5;
-      --text-color: #111;
+      --bg-color: #ffffff;
+      --text-color: #000000;
       --card-color: #ffffff;
       --nav-bg: #f0f0f0;
     }
@@ -38,17 +38,20 @@
       position: sticky;
       top: 0;
       z-index: 999;
+      flex-wrap: wrap;
     }
 
     .nav-links {
       display: flex;
       gap: 15px;
+      flex-wrap: wrap;
     }
 
     nav a {
       color: var(--accent-color);
       text-decoration: none;
       font-weight: bold;
+      font-size: 1rem;
     }
 
     .toggle {
@@ -59,8 +62,14 @@
       padding: 6px 14px;
       border-radius: 20px;
       font-weight: bold;
+      transition: 0.3s;
     }
 
+    .toggle:hover {
+      opacity: 0.85;
+    }
+
+    /* Background animation */
     .stars {
       position: fixed;
       width: 100%;
@@ -100,12 +109,8 @@
     }
 
     @keyframes moveStars {
-      0% {
-        background-position: 0 0;
-      }
-      100% {
-        background-position: 10000px 5000px;
-      }
+      0% { background-position: 0 0; }
+      100% { background-position: 10000px 5000px; }
     }
 
     .container {
@@ -185,9 +190,23 @@
     }
 
     @media (max-width: 600px) {
-      .nav-links {
+      nav {
         flex-direction: column;
-        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        width: 100%;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .toggle {
+        align-self: flex-end;
+      }
+
+      .container {
+        margin: 40px 10px;
       }
     }
   </style>
@@ -214,6 +233,7 @@
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <textarea name="review" rows="3" placeholder="Give me a review (optional)"></textarea>
       <button type="submit">Send Message</button>
     </form>
 
@@ -226,7 +246,7 @@
 
   <script>
     function toggleMode() {
-      document.body.classList.toggle('light-mode');
+      document.body.classList.toggle("light-mode");
     }
   </script>
 </body>
