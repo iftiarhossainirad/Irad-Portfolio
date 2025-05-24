@@ -1,283 +1,214 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact – Irad</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
     :root {
       --bg-color: #0f1115;
       --text-color: #ffffff;
       --accent-color: #00bfff;
       --card-color: #1a1d23;
-    }
+      --nav-bg: #1a1d23;
+    }body.light-mode {
+  --bg-color: #f5f5f5;
+  --text-color: #111;
+  --accent-color: #0077ff;
+  --card-color: #ffffff;
+  --nav-bg: #f0f0f0;
+}
 
-    body.light {
-      --bg-color: #f5f5f5;
-      --text-color: #111;
-      --card-color: #ffffff;
-    }
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background 0.3s, color 0.3s;
+  position: relative;
+  overflow-x: hidden;
+}
 
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      transition: 0.4s;
-      position: relative;
-      overflow-x: hidden;
-    }
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--nav-bg);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  transition: background 0.3s;
+}
 
-    /* Animated background */
-    .stars {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: transparent url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/starfield.png') repeat top center;
-      animation: moveStars 200s linear infinite;
-      z-index: -2;
-    }
+nav a {
+  color: var(--accent-color);
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-    .blob {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      width: 600px;
-      height: 600px;
-      background: linear-gradient(135deg, #00bfff, #ff1493);
-      opacity: 0.2;
-      border-radius: 50%;
-      transform: translate(-50%, -50%);
-      animation: blobMove 18s ease-in-out infinite alternate;
-      z-index: -1;
-    }
+.toggle {
+  cursor: pointer;
+  background: var(--accent-color);
+  color: #000;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: bold;
+}
 
-    @keyframes blobMove {
-      0% { border-radius: 42% 58% 63% 37% / 40% 43% 57% 60%; }
-      50% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: translate(-50%, -50%) scale(1.1); }
-      100% { border-radius: 40% 60% 70% 30% / 50% 60% 40% 50%; }
-    }
+.stars {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: transparent url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/starfield.png') repeat top center;
+  animation: moveStars 200s linear infinite;
+  z-index: -2;
+}
 
-    @keyframes moveStars {
-      0% { background-position: 0 0; }
-      100% { background-position: 10000px 5000px; }
-    }
+.blob {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  background: linear-gradient(135deg, #00bfff, #ff1493);
+  opacity: 0.2;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: blobMove 18s ease-in-out infinite alternate;
+  z-index: -1;
+}
 
-    /* Navbar */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      background: var(--card-color);
-      padding: 12px 20px;
-      box-shadow: 0 2px 4px #00000020;
-      z-index: 10;
-      position: sticky;
-      top: 0;
-    }
+@keyframes blobMove {
+  0% { border-radius: 42% 58% 63% 37% / 40% 43% 57% 60%; transform: translate(-50%, -50%) scale(1); }
+  50% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: translate(-50%, -50%) scale(1.1); }
+  100% { border-radius: 40% 60% 70% 30% / 50% 60% 40% 50%; transform: translate(-50%, -50%) scale(1); }
+}
 
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-    }
+@keyframes moveStars {
+  0% { background-position: 0 0; }
+  100% { background-position: 10000px 5000px; }
+}
 
-    nav a {
-      color: var(--accent-color);
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 8px 12px;
-      border-radius: 6px;
-      transition: 0.3s;
-    }
+.container {
+  max-width: 800px;
+  margin: 60px auto;
+  padding: 30px 20px;
+  background: var(--card-color);
+  border-radius: 12px;
+  box-shadow: 0 0 20px #00000040;
+  position: relative;
+  z-index: 2;
+}
 
-    nav a:hover {
-      background-color: var(--accent-color);
-      color: var(--bg-color);
-    }
+h1 {
+  text-align: center;
+  color: var(--accent-color);
+}
 
-    .toggle {
-      display: flex;
-      align-items: center;
-    }
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 30px;
+}
 
-    .toggle input {
-      display: none;
-    }
+input, textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  background: #2a2d34;
+  color: white;
+  resize: vertical;
+}
 
-    .toggle label {
-      background: var(--accent-color);
-      border-radius: 30px;
-      cursor: pointer;
-      display: inline-block;
-      height: 24px;
-      position: relative;
-      width: 50px;
-    }
+input:focus, textarea:focus {
+  outline: 2px solid var(--accent-color);
+}
 
-    .toggle label::after {
-      background: var(--bg-color);
-      border-radius: 50%;
-      content: '';
-      height: 18px;
-      left: 3px;
-      position: absolute;
-      top: 3px;
-      width: 18px;
-      transition: 0.3s;
-    }
+button {
+  padding: 12px;
+  background: var(--accent-color);
+  color: var(--bg-color);
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-    .toggle input:checked + label::after {
-      transform: translateX(26px);
-    }
+button:hover {
+  opacity: 0.8;
+}
 
-    /* Contact container */
-    .container {
-      max-width: 800px;
-      margin: 60px auto;
-      padding: 30px 20px;
-      background: var(--card-color);
-      border-radius: 12px;
-      box-shadow: 0 0 20px #00000040;
-      position: relative;
-      z-index: 2;
-    }
+.contact-links {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
-    h1 {
-      text-align: center;
-      color: var(--accent-color);
-    }
+.contact-links a {
+  text-decoration: none;
+  color: var(--accent-color);
+  font-weight: bold;
+  border: 2px solid var(--accent-color);
+  padding: 10px 20px;
+  border-radius: 30px;
+  transition: 0.3s;
+}
 
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-top: 30px;
-    }
+.contact-links a:hover {
+  background: var(--accent-color);
+  color: var(--bg-color);
+}
 
-    input, textarea {
-      padding: 12px;
-      border-radius: 8px;
-      border: none;
-      font-size: 1rem;
-      background: #2a2d34;
-      color: white;
-      resize: vertical;
-    }
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-    input:focus, textarea:focus {
-      outline: 2px solid var(--accent-color);
-    }
+  .container {
+    margin: 40px 10px;
+  }
+}
 
-    button {
-      padding: 12px;
-      background: var(--accent-color);
-      color: var(--bg-color);
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      opacity: 0.8;
-    }
-
-    .contact-links {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .contact-links a {
-      text-decoration: none;
-      color: var(--accent-color);
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 1.1rem;
-      border: 2px solid var(--accent-color);
-      padding: 10px 18px;
-      border-radius: 30px;
-      transition: 0.3s;
-    }
-
-    .contact-links a:hover {
-      background: var(--accent-color);
-      color: var(--bg-color);
-    }
-
-    @media (max-width: 600px) {
-      .nav-links {
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-        margin-top: 10px;
-      }
-
-      nav {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .container {
-        margin: 40px 10px;
-      }
-    }
   </style>
 </head>
 <body>
-
   <div class="stars"></div>
-  <div class="blob"></div>
-
-  <nav>
-    <div class="nav-links">
+  <div class="blob"></div>  <nav>
+    <div>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
       <a href="projects.html">Projects</a>
       <a href="blog.html">Blog</a>
       <a href="contact.html">Contact</a>
     </div>
-    <div class="toggle">
-      <input type="checkbox" id="modeToggle">
-      <label for="modeToggle"></label>
-    </div>
-  </nav>
-
-  <div class="container">
+    <button class="toggle" onclick="toggleMode()">Toggle Mode</button>
+  </nav>  <div class="container">
     <h1>Contact Me</h1>
     <form action="https://formspree.io/f/mqaqjbae" method="POST">
       <input type="text" name="name" placeholder="Your Name" required>
       <input type="email" name="email" placeholder="Your Email" required>
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <input type="text" name="review" placeholder="Give me a review (optional)">
+      <input type="text" name="review" placeholder="Give me a review">
       <button type="submit">Send Message</button>
-    </form>
+    </form><div class="contact-links">
+  <a href="mailto:iftiarhossainirad@gmail.com">Email Me</a>
+  <a href="https://www.facebook.com/IftiarHossainIrad" target="_blank">Facebook</a>
+  <a href="https://www.instagram.com/iftiarhossainirad" target="_blank">Instagram</a>
+</div>
 
-    <div class="contact-links">
-      <a href="mailto:iftiarhossainirad@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-      <a href="https://www.facebook.com/IftiarHossainIrad" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-      <a href="https://www.instagram.com/iftiarhossainirad" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-      <a href="https://www.google.com" target="_blank"><i class="fab fa-google"></i> Google</a>
-    </div>
-  </div>
-
-  <script>
-    const toggle = document.getElementById('modeToggle');
-    toggle.addEventListener('change', () => {
-      document.body.classList.toggle('light');
-    });
-  </script>
-</body>
+  </div>  <script>
+    function toggleMode() {
+      document.body.classList.toggle("light-mode");
+    }
+  </script></body>
 </html>
