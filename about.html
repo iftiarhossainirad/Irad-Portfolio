@@ -10,12 +10,14 @@
       --bg-color: #0f1115;
       --text-color: #ffffff;
       --accent-color: #00bfff;
+      --nav-bg: #1a1d23;
     }
 
     body.light-mode {
       --bg-color: #ffffff;
       --text-color: #000000;
       --accent-color: #0077ff;
+      --nav-bg: #f0f0f0;
     }
 
     body {
@@ -30,11 +32,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: #1a1d23;
+      background: var(--nav-bg);
       padding: 10px 20px;
       position: sticky;
       top: 0;
       z-index: 999;
+      transition: background 0.3s;
     }
 
     nav a {
