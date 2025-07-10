@@ -1,4 +1,3 @@
-<!-- 🏠 HOME PAGE CODE -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,105 +13,290 @@
   <title>Irad – Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
   <style>
-    /* 🔗 Same styles as before — not changed here to save space */
+    :root {
+      --bg-dark: #0f1115;
+      --bg-gradient-dark: linear-gradient(135deg, #0f1115, #1a2a6c 70%, #000d1a);
+      --star-color-dark: #fff;
+      --bg-light: #f5f9ff;
+      --bg-gradient-light: linear-gradient(135deg, #e3f0ff, #c1d9ff 70%, #a0c1ff);
+      --star-color-light: #a0a8b9;
+      --text-dark: #fff;
+      --accent-dark: #00bfff;
+      --text-light: #000;
+      --accent-light: #0077ff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      min-height: 100vh;
+      background: var(--bg-dark);
+      color: var(--text-dark);
+      overflow-x: hidden;
+      position: relative;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.light-mode {
+      background: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -2;
+      background: var(--bg-gradient-dark);
+    }
+
+    body.light-mode::before {
+      background: var(--bg-gradient-light);
+    }
+
+    #starfield {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background-color: var(--star-color-dark);
+      opacity: 0.8;
+      animation: twinkle linear infinite alternate;
+    }
+
+    body.light-mode .star {
+      background-color: var(--star-color-light);
+      opacity: 0.5;
+    }
+
+    .star.small { width: 1.5px; height: 1.5px; animation-duration: 3s; }
+    .star.medium { width: 2.2px; height: 2.2px; animation-duration: 5s; }
+    .star.large { width: 3px; height: 3px; animation-duration: 7s; }
+
+    @keyframes twinkle {
+      from { opacity: 0.8; } to { opacity: 0.2; }
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      background-color: #1a1d23;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    body.light-mode nav { background-color: #e6f0ff; }
+
+    nav a {
+      color: var(--accent-dark);
+      font-weight: 600;
+      margin: 0 14px;
+      text-decoration: none;
+    }
+
+    body.light-mode nav a { color: var(--accent-light); }
+
+    .toggle {
+      cursor: pointer;
+      background-color: var(--accent-dark);
+      border: none;
+      border-radius: 20px;
+      padding: 7px 16px;
+      font-weight: 700;
+      color: #000;
+    }
+
+    body.light-mode .toggle {
+      background-color: var(--accent-light);
+      color: #fff;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 60px auto 80px;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeIn 1.2s ease forwards;
+    }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+      color: var(--accent-dark);
+    }
+
+    body.light-mode h1 { color: var(--accent-light); }
+
+    .typing-text {
+      font-weight: 600;
+      font-size: 1.5rem;
+      min-height: 35px;
+      margin-bottom: 18px;
+    }
+
+    .profile-img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--accent-dark);
+      margin: 20px auto;
+      display: block;
+      transition: border-color 0.3s ease;
+    }
+
+    body.light-mode .profile-img { border-color: var(--accent-light); }
+
+    .button {
+      background-color: var(--accent-dark);
+      color: #000;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 30px;
+    }
+
+    body.light-mode .button {
+      background-color: var(--accent-light);
+      color: #fff;
+    }
+
+    .button:hover { background-color: #33ccff; }
+
+    #scrollTopBtn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: none;
+      background-color: var(--accent-dark);
+      color: #fff;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.1rem; }
+      .typing-text { font-size: 1.2rem; min-height: 28px; }
+    }
   </style>
 </head>
 <body>
-  <nav>
-    <div>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="projects.html">Projects</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </div>
-    <button class="toggle" onclick="toggleMode()">Toggle Mode</button>
-  </nav>
 
-  <div id="starfield"></div>
-
-  <main class="container">
-    <img src="irad.jpg" alt="Photo of Irad" class="profile-img" />
-    <h1 id="typing" class="typing-text"></h1>
-    <p>Welcome to my personal website! I'm a creative student from Dhaka with a passion for web development, tech, and design.</p>
-    <a href="projects.html" class="button">Explore My Work</a>
-  </main>
-
-  <div style="text-align: center; margin: 40px 0;">
-    <p style="color: var(--accent-dark); font-weight: bold;">Visitors:</p>
-    <a href="https://www.hitwebcounter.com" target="_blank" rel="noopener noreferrer">
-      <img src="https://hitwebcounter.com/counter/counter.php?page=20706337&style=0038&nbdigits=5&type=page&initCount=0" alt="Website visit counter" border="0" />
-    </a>
+<nav>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="projects.html">Projects</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
   </div>
+  <button class="toggle" onclick="toggleMode()">Toggle Mode</button>
+</nav>
 
-  <button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">↑</button>
+<div id="starfield"></div>
 
-  <footer style="text-align: center; padding: 20px; color: #777; font-size: 14px;">
-    &copy; 2025 Irad. All Rights Reserved.
-  </footer>
+<main class="container">
+  <img src="irad.jpg" alt="Photo of Irad" class="profile-img" />
+  <h1 id="typing" class="typing-text"></h1>
+  <p>Welcome to my personal website! I'm a creative student from Dhaka with a passion for web development, tech, and design.</p>
+  <a href="projects.html" class="button">Explore My Work</a>
+</main>
 
-  <script>
-    const textArray = ["Hi, I'm Irad.", "Web Developer.", "Tech Explorer.", "Creative Thinker."];
-    let index = 0, charIndex = 0, isDeleting = false;
+<div style="text-align: center; margin: 40px 0;">
+  <p style="color: var(--accent-dark); font-weight: bold;">Visitors:</p>
+  <a href="https://www.hitwebcounter.com" target="_blank" rel="noopener noreferrer">
+    <img src="https://hitwebcounter.com/counter/counter.php?page=20706337&style=0038&nbdigits=5&type=page&initCount=0" alt="Website visit counter" border="0" />
+  </a>
+</div>
 
-    function typeEffect() {
-      const typingElement = document.getElementById("typing");
-      const currentText = textArray[index];
-      if (!isDeleting && charIndex <= currentText.length) {
-        typingElement.textContent = currentText.substring(0, charIndex++);
-      } else if (isDeleting && charIndex >= 0) {
-        typingElement.textContent = currentText.substring(0, charIndex--);
-      }
-      if (charIndex === currentText.length && !isDeleting) {
-        isDeleting = true;
-        setTimeout(typeEffect, 1200);
-      } else if (charIndex === 0 && isDeleting) {
-        isDeleting = false;
-        index = (index + 1) % textArray.length;
-        setTimeout(typeEffect, 400);
-      } else {
-        setTimeout(typeEffect, isDeleting ? 60 : 100);
-      }
+<button onclick="scrollToTop()" id="scrollTopBtn" title="Go to top">↑</button>
+
+<footer style="text-align: center; padding: 20px; color: #777; font-size: 14px;">
+  &copy; 2025 Irad. All Rights Reserved.
+</footer>
+
+<script>
+  const textArray = ["Hi, I'm Irad.", "Web Developer.", "Tech Explorer.", "Creative Thinker."];
+  let index = 0, charIndex = 0, isDeleting = false;
+
+  function typeEffect() {
+    const typingElement = document.getElementById("typing");
+    const currentText = textArray[index];
+    if (!isDeleting && charIndex <= currentText.length) {
+      typingElement.textContent = currentText.substring(0, charIndex++);
+    } else if (isDeleting && charIndex >= 0) {
+      typingElement.textContent = currentText.substring(0, charIndex--);
     }
-
-    const starfield = document.getElementById('starfield');
-    const sizes = ['small', 'medium', 'large'];
-
-    function createStars(count = 30) {
-      starfield.innerHTML = '';
-      const width = window.innerWidth, height = window.innerHeight;
-      for(let i = 0; i < count; i++) {
-        const star = document.createElement('div');
-        star.classList.add('star', sizes[Math.floor(Math.random() * sizes.length)]);
-        star.style.top = Math.random() * height + 'px';
-        star.style.left = Math.random() * width + 'px';
-        star.style.animationDelay = (Math.random() * 7) + 's';
-        starfield.appendChild(star);
-      }
+    if (charIndex === currentText.length && !isDeleting) {
+      isDeleting = true;
+      setTimeout(typeEffect, 1200);
+    } else if (charIndex === 0 && isDeleting) {
+      isDeleting = false;
+      index = (index + 1) % textArray.length;
+      setTimeout(typeEffect, 400);
+    } else {
+      setTimeout(typeEffect, isDeleting ? 60 : 100);
     }
+  }
 
-    function toggleMode() {
-      const isLight = document.body.classList.toggle("light-mode");
-      localStorage.setItem("theme", isLight ? "light" : "dark");
+  const starfield = document.getElementById('starfield');
+  const sizes = ['small', 'medium', 'large'];
+  function createStars(count = 30) {
+    starfield.innerHTML = '';
+    const width = window.innerWidth, height = window.innerHeight;
+    for(let i = 0; i < count; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star', sizes[Math.floor(Math.random() * sizes.length)]);
+      star.style.top = Math.random() * height + 'px';
+      star.style.left = Math.random() * width + 'px';
+      star.style.animationDelay = (Math.random() * 7) + 's';
+      starfield.appendChild(star);
     }
+  }
 
-    function scrollToTop() {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+  function toggleMode() {
+    const isLight = document.body.classList.toggle('light-mode');
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+  }
 
-    window.onscroll = () => {
-      document.getElementById("scrollTopBtn").style.display =
-        (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100)
-        ? "block" : "none";
-    };
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
-    window.onload = () => {
-      if (localStorage.getItem("theme") === "light") {
-        document.body.classList.add("light-mode");
-      }
-      createStars(30);
-      typeEffect();
-    };
-  </script>
+  window.onscroll = () => {
+    document.getElementById("scrollTopBtn").style.display = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) ? "block" : "none";
+  };
+
+  window.onload = () => {
+    const saved = localStorage.getItem("theme");
+    if (saved === "light") document.body.classList.add("light-mode");
+    createStars(30);
+    typeEffect();
+  };
+</script>
 </body>
 </html>
