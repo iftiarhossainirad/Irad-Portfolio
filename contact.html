@@ -142,6 +142,7 @@
       background: #2a2d34;
       color: white;
       resize: vertical;
+      transition: outline 0.3s;
     }
 
     input:focus, textarea:focus {
@@ -231,8 +232,8 @@
   <div class="container">
     <h1>Contact Me</h1>
     <form action="https://formspree.io/f/mqaqjbae" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
       <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
       <textarea name="review" rows="3" placeholder="Give me a review (optional)"></textarea>
       <button type="submit">Send Message</button>
@@ -240,15 +241,22 @@
 
     <div class="contact-links">
       <a href="mailto:iftiarhossainirad@gmail.com"><i class="fas fa-envelope"></i>Email</a>
-      <a href="https://www.facebook.com/IftiarHossainIrad" target="_blank"><i class="fab fa-facebook-f"></i>Facebook</a>
-      <a href="https://www.instagram.com/iftiarhossainirad" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
+      <a href="https://www.facebook.com/IftiarHossainIrad" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i>Facebook</a>
+      <a href="https://www.instagram.com/iftiarhossainirad" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i>Instagram</a>
     </div>
   </div>
 
   <script>
     function toggleMode() {
-      document.body.classList.toggle("light-mode");
+      const isLight = document.body.classList.toggle("light-mode");
+      localStorage.setItem("theme", isLight ? "light" : "dark");
     }
+
+    window.onload = () => {
+      if (localStorage.getItem("theme") === "light") {
+        document.body.classList.add("light-mode");
+      }
+    };
   </script>
 </body>
 </html>
